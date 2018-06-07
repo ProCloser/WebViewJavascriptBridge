@@ -164,6 +164,8 @@
     if (strongDelegate && [strongDelegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
         [strongDelegate webViewDidFinishLoad:webView];
     }
+    
+    [_base injectBridgeFile];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {

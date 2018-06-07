@@ -110,6 +110,11 @@ static int logMaxLength = 500;
     }
 }
 
+-(void)injectBridgeFile{
+    NSString *js = WebViewJsBridgeInit_js();
+    [self _evaluateJavascript:js];
+}
+
 - (void)injectJavascriptFile {
     NSString *js = WebViewJavascriptBridge_js();
     [self _evaluateJavascript:js];

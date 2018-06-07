@@ -27,7 +27,7 @@
     _bridge = [WebViewJavascriptBridge bridgeForWebView:webView];
     [_bridge setWebViewDelegate:self];
     
-    [_bridge registerHandler:@"testObjcCallback" handler:^(id data, WVJBResponseCallback responseCallback) {
+    [_bridge registerHandler:NSStringFromSelector(@selector(testObjcCallback)) handler:^(id data, WVJBResponseCallback responseCallback) {
         NSLog(@"testObjcCallback called: %@", data);
         responseCallback(@"Response from testObjcCallback");
     }];
@@ -36,6 +36,10 @@
     
     [self renderButtons:webView];
     [self loadExamplePage:webView];
+}
+
+-(void)testObjcCallback{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {

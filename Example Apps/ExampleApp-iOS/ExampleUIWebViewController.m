@@ -37,6 +37,10 @@
     [self loadExamplePage:webView];
 }
 
+-(NSString *)testObjcCallback{
+    return @"testContent";
+}
+
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     NSLog(@"webViewDidStartLoad");
 }

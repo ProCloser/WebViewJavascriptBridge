@@ -107,6 +107,7 @@
     if (strongDelegate && [strongDelegate respondsToSelector:@selector(webView:didFinishNavigation:)]) {
         [strongDelegate webView:webView didFinishNavigation:navigation];
     }
+    [_base injectBridgeFile];
 }
 
 

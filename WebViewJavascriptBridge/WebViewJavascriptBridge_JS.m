@@ -10,6 +10,35 @@
 
 #import "WebViewJavascriptBridge_JS.h"
 
+NSString * WebViewJsBridgeInit_js() {
+#define __wvjb_js_func__(x) #x
+    static NSString * preprocessorJSCode =
+    @__wvjb_js_func__(;
+(function(){
+        function initBridge(){
+            if (window.WebViewJavascriptBridge) {
+                return;
+            }
+            var WVJBIframe = document.createElement('iframe');
+            WVJBIframe.style.display = 'none';
+            WVJBIframe.src = 'https://__bridge_loaded__';
+            document.documentElement.appendChild(WVJBIframe);
+            setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+        }
+    
+        initBridge();
+    
+    }
+ )();
+                      
+                  );// END preprocessorJSCode
+    
+#undef __wvjb_js_func__
+    return preprocessorJSCode;
+    
+    
+}
+
 NSString * WebViewJavascriptBridge_js() {
 	#define __wvjb_js_func__(x) #x
 	

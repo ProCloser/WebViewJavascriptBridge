@@ -48,7 +48,10 @@ NSString * WebViewJavascriptBridge_js() {
 	if (window.WebViewJavascriptBridge) {
 		return;
 	}
+    if (!window.WVJBCallbacks){
         window.WVJBCallbacks = [];
+    }
+//        window.WVJBCallbacks = [];
 
 	if (!window.onerror) {
 		window.onerror = function(msg, url, line) {
